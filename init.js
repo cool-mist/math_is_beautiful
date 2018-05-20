@@ -14,6 +14,3 @@ depth : recursion depth
 
 Settings.register(sierpinskiTriangleGenerator);
 Settings.register(sierpinskiCarpetGenerator);
-
-
-Settings.init();

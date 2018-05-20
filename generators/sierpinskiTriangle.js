@@ -14,7 +14,7 @@ function sierpinskiTriangle(x1, y1, x2, y2, x3, y3, depth){
 
 function cutTriangles(x1, y1, x2, y2, x3, y3, depth){
 
-    if(depth <= 0){
+    if(depth <= 1){
         return;
     }
 
@@ -30,12 +30,4 @@ function cutTriangles(x1, y1, x2, y2, x3, y3, depth){
     cutTriangles(x1, y1, x12, y12, x13, y13, depth-1);
     cutTriangles(x12, y12, x2, y2, x23, y23, depth-1);
     cutTriangles(x13, y13, x23, y23, x3, y3, depth-1);
-}
-
-function mid(x1, x2){
-    return (x1 + x2)/2;
-}
-
-function fillRandomColor(){
-    fill(random(Settings.hue), random(Settings.sat), random(Settings.bri));
 }

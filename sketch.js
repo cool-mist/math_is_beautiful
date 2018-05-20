@@ -1,8 +1,5 @@
 function setup() {
-    colorMode(HSB);
-    createCanvas(Settings.canvasSize, Settings.canvasSize);
-    background(random(255));
-    noStroke();
+    resetBoard();
 }
 
 function draw() {
@@ -11,25 +8,30 @@ function draw() {
 }
 
 function drawWithCurrentSettings(Settings){
-    let sizeOfEachSquare = Settings.canvasSize / Settings.numSquares;
-    for (var i = 0; i < Settings.numSquares; i++) {
+    let sizeOfEachSquare = Settings.canvasSize / Settings.patternCount;
+    for (var i = 0; i < Settings.patternCount; i++) {
         let startX = i*sizeOfEachSquare;
-        for(var j = 0; j < Settings.numSquares; j++){
+        for(var j = 0; j < Settings.patternCount; j++){
             let startY = j*sizeOfEachSquare;
-            Settings.generator(startX, startY, sizeOfEachSquare, sizeOfEachSquare, Settings.maxDepth);   
+            Settings.generator(startX, startY, sizeOfEachSquare, sizeOfEachSquare, Settings.depth);   
         }
     }
 }
 
 function keyPressed(){
-    if(isGenerateNewImage(Settings, keyCode)){
-        drawOnce();    
-    }
     if(isSaveCanvasToPNG(Settings, keyCode)){
         savePNG();
-    } 
-    if(isSelectNextGenerator(Settings, keyCode)){
-        selectNextGenerator(Settings);
+        return;
+    }
+
+    if(isGenerateNewImage(Settings, keyCode)){
+        resetBoard();
+        return;    
+    }
+
+    if(Settings.handleKeyPress(keyCode)){
+        resetBoard();
+        return;
     }
 }
 
@@ -37,8 +39,11 @@ function isGenerateNewImage(Settings, keyCode){
     return keyCode === Settings.newImage;
 }
 
-function drawOnce(){
-    redraw();
+function resetBoard(){
+    Settings.init();
+    createCanvas(Settings.canvasSize, Settings.canvasSize);
+    noStroke();
+    loop();
 }
 
 
@@ -48,13 +53,4 @@ function isSaveCanvasToPNG(Settings, keyCode){
 
 function savePNG(){
     saveCanvas(Settings.generator, 'png');
-}
-
-function isSelectNextGenerator(Settings, keyCode){
-    return keyCode === Settings.nextGenerator;
-}
-
-function selectNextGenerator(Settings){
-    Settings.nextGen();
-    redraw();
 }
