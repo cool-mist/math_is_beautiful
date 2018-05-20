@@ -3,10 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> body {padding: 0; margin: 0;} </style>
+    <style> 
+      html, body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+
+        display: flex;
+
+        /* This centers our sketch horizontally. */
+        justify-content: center;
+
+        /* This centers our sketch vertically. */
+        align-items: center;
+      }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+
+    <script src="settings.js"></script>
+    <script src="generators/serpinskiTriangle.js"></script>
     <script src="sketch.js"></script>
   </head>
   <body>
