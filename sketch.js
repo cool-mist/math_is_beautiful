@@ -11,9 +11,14 @@ function draw() {
 }
 
 function drawWithCurrentSettings(Settings){
-    if(Settings.generator === "triangle"){
-        drawUsingSerpinskiTriangleGenerator(Settings);
-    } 
+    let sizeOfEachSquare = Settings.canvasSize / Settings.numSquares;
+    for (var i = 0; i < Settings.numSquares; i++) {
+        let startX = i*sizeOfEachSquare;
+        for(var j = 0; j < Settings.numSquares; j++){
+            let startY = j*sizeOfEachSquare;
+            Settings.generator(startX, startY, sizeOfEachSquare, sizeOfEachSquare, Settings.maxDepth);   
+        }
+    }
 }
 
 function keyPressed(){
@@ -23,20 +28,33 @@ function keyPressed(){
     if(isSaveCanvasToPNG(Settings, keyCode)){
         savePNG();
     } 
+    if(isSelectNextGenerator(Settings, keyCode)){
+        selectNextGenerator(Settings);
+    }
 }
 
 function isGenerateNewImage(Settings, keyCode){
     return keyCode === Settings.newImage;
 }
 
-function isSaveCanvasToPNG(Settings, keyCode){
-    return keyCode === Settings.saveImage;
-}
-
 function drawOnce(){
     redraw();
 }
 
+
+function isSaveCanvasToPNG(Settings, keyCode){
+    return keyCode === Settings.saveImage;
+}
+
 function savePNG(){
     saveCanvas(Settings.generator, 'png');
+}
+
+function isSelectNextGenerator(Settings, keyCode){
+    return keyCode === Settings.nextGenerator;
+}
+
+function selectNextGenerator(Settings){
+    Settings.nextGen();
+    redraw();
 }

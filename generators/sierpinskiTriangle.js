@@ -1,15 +1,4 @@
-function drawUsingSerpinskiTriangleGenerator(Settings){
-    let sizeOfEachSquare = Settings.canvasSize / Settings.numSquares;
-    for (var i = 0; i < Settings.numSquares; i++) {
-        let startX = i*sizeOfEachSquare;
-        for(var j = 0; j < Settings.numSquares; j++){
-            let startY = j*sizeOfEachSquare;
-            multiTriangle(startX, startY, sizeOfEachSquare, sizeOfEachSquare, Settings.maxDepth);   
-        }
-    }
-}
-
-function multiTriangle(x, y, w, h, depth){
+function sierpinskiTriangleGenerator(x, y, w, h, depth){
     sierpinskiTriangle(x    , y    , x + w, y    , x + w / 2, y + h / 2, depth);
     sierpinskiTriangle(x    , y    , x    , y + h, x + w / 2, y + h / 2, depth);
     sierpinskiTriangle(x + w, y    , x + w, y + h, x + w / 2, y + h / 2, depth);
