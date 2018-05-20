@@ -52,5 +52,5 @@ function isSaveCanvasToPNG(Settings, keyCode){
 }
 
 function savePNG(){
-    saveCanvas(Settings.generator, 'png');
+    saveCanvas('image', 'png');
 }
