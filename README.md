@@ -1,8 +1,8 @@
 # Math is Beautiful
 :sparkles: Generate beautiful designs, inspired by recursion, powered by [p5.js](https://p5js.org/)
 
-![](https://imgur.com/a/TXtPEZ5)
-![](https://imgur.com/a/esjlxZ4)
+![triangle](https://imgur.com/a/TXtPEZ5)
+![carpet](https://imgur.com/a/esjlxZ4)
 
 ### Usage
 Interactive `index.html`
