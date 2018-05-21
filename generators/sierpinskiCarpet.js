@@ -1,8 +1,8 @@
-function sierpinskiCarpetGenerator(x, y, w, h, depth){
+function sierpinskiCarpetGenerator(x, y, w, h, complexity){
 	rectMode(CENTER);
 	fillRandomColor();
 	rect(x + w / 2, y + h / 2, w, h);
-	sierpinskiCarpet(x, y, w, h, depth);
+	sierpinskiCarpet(x, y, w, h, complexity);
 }
 
 function sierpinskiCarpet(x, y, w, h, depth){

@@ -5,11 +5,11 @@ var Settings = {
     
     canvasSize   : 800,
     patternCount : 1,
-    depth        : 1,
+    complexity   : 1,
 
     // Bounds
-    minDepth : 1,
-    maxDepth : 5,
+    minComplexity : 1,
+    maxComplexity : 5,
 
     minPatternCount : 1,
     maxPatternCount : 15,
@@ -35,10 +35,10 @@ var Settings = {
             Settings.nextGen();
             return true;
         }else if(keyCode === this.incrementDepth){
-            this.modifyDepth(1);
+            this.modifyComplexity(1);
             return true;
         }else if(keyCode === this.decrementDepth){
-            this.modifyDepth(-1);
+            this.modifyComplexity(-1);
             return true;
         }else if(keyCode === this.incrementPatternCount){
             this.modifyPatternCount(1);
@@ -68,8 +68,8 @@ var Settings = {
         colorMode(HSB);
     },
 
-    modifyDepth : function(count){
-        this.depth = boundedIncrement(this.depth, count, this.minDepth, this.maxDepth);
+    modifyComplexity : function(count){
+        this.complexity = boundedIncrement(this.complexity, count, this.minDepth, this.maxDepth);
     },
 
     modifyPatternCount : function(count){

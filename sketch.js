@@ -13,7 +13,7 @@ function drawWithCurrentSettings(Settings){
         let startX = i*sizeOfEachSquare;
         for(var j = 0; j < Settings.patternCount; j++){
             let startY = j*sizeOfEachSquare;
-            Settings.generator(startX, startY, sizeOfEachSquare, sizeOfEachSquare, Settings.depth);   
+            Settings.generator(startX, startY, sizeOfEachSquare, sizeOfEachSquare, Settings.complexity);   
         }
     }
 }

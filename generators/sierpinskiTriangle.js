@@ -1,8 +1,8 @@
-function sierpinskiTriangleGenerator(x, y, w, h, depth){
-    sierpinskiTriangle(x    , y    , x + w, y    , x + w / 2, y + h / 2, depth);
-    sierpinskiTriangle(x    , y    , x    , y + h, x + w / 2, y + h / 2, depth);
-    sierpinskiTriangle(x + w, y    , x + w, y + h, x + w / 2, y + h / 2, depth);
-    sierpinskiTriangle(x    , y + h, x + w, y + h, x + w / 2, y + h / 2, depth);
+function sierpinskiTriangleGenerator(x, y, w, h, complexity){
+    sierpinskiTriangle(x    , y    , x + w, y    , x + w / 2, y + h / 2, complexity);
+    sierpinskiTriangle(x    , y    , x    , y + h, x + w / 2, y + h / 2, complexity);
+    sierpinskiTriangle(x + w, y    , x + w, y + h, x + w / 2, y + h / 2, complexity);
+    sierpinskiTriangle(x    , y + h, x + w, y + h, x + w / 2, y + h / 2, complexity);
 }
 
 function sierpinskiTriangle(x1, y1, x2, y2, x3, y3, depth){
