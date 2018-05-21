@@ -1,16 +1,16 @@
 function sierpinskiCarpetGenerator(x, y, w, h, complexity){
 	rectMode(CENTER);
-	fillRandomColor();
+	SKETCH_UTIL.fillRandomColor();
 	rect(x + w / 2, y + h / 2, w, h);
 	sierpinskiCarpet(x, y, w, h, complexity);
 }
 
 function sierpinskiCarpet(x, y, w, h, depth){
 	
-	fillRandomColor();
+	SKETCH_UTIL.fillRandomColor();
 
-	let xmid = mid(x, x + w);
-	let ymid = mid(y, y + h)
+	let xmid = UTIL.mid(x, x + w);
+	let ymid = UTIL.mid(y, y + h)
 	rect(xmid, ymid, w/3, h/3);
 
 	if(depth <= 1){

@@ -11,10 +11,10 @@ Interactive `index.html`
 | `s` | Save the image as PNG |
 | `g` | Generate a new image |
 | `n` | Switch to next pattern generator |
-| `+` | More pattern blocks |
-| `-` | Less pattern blocks |
-| `]` | Increase recursion depth |
-| `[` | Decrease recursion depth |
+| `]` | More pattern blocks |
+| `[` | Less pattern blocks |
+| `+` | Make the pattern more complex |
+| `-` | Make the pattern less complex |
 
 ### Available Generators :snowflake:
 Present in `generators`.
