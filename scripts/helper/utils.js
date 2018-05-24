@@ -17,6 +17,16 @@ function getUtil(){
             }
 
             return val;
-        } 
+        },
+
+        loadScript : function (url, callback){
+            var script = document.createElement('script');
+            script.onload = function(){
+                console.log("Loaded " + url);
+                callback(url);
+            };
+            script.src = url;
+            document.getElementsByTagName('html')[0].append(script);
+        },
     }
 }
