@@ -3,7 +3,7 @@ function getAppSettings(){
         generators : [],
         current    : -1,
         
-        canvasSize   : 800,
+        canvasSize   : 400,
         patternCount : 1,
         complexity   : 1,
 

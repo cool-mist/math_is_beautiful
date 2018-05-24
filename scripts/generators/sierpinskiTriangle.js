@@ -6,7 +6,7 @@ function sierpinskiTriangleGenerator(x, y, w, h, complexity){
 }
 
 function sierpinskiTriangle(x1, y1, x2, y2, x3, y3, depth){
-    SKETCH_UTIL.fillRandomColor();
+    SKETCH.fillRandomColor();
 
     triangle(x1, y1, x2, y2, x3, y3);
     cutTriangles(x1, y1, x2, y2, x3, y3, depth);
@@ -18,7 +18,7 @@ function cutTriangles(x1, y1, x2, y2, x3, y3, depth){
         return;
     }
 
-    SKETCH_UTIL.fillRandomColor();
+    SKETCH.fillRandomColor();
     let x12 = UTIL.mid(x1, x2);
     let x23 = UTIL.mid(x2, x3);
     let x13 = UTIL.mid(x1, x3);

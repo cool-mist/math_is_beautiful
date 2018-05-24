@@ -1,8 +1,20 @@
 /*Globals - The only set of globals coming from THIS app*/
+
+var APPLICATION = {
+    registerInitializedListener : function(callback){
+        this.onApplicationInitialized = callback;
+    }
+};  
+
 var UTIL;                // General purpose utils
-var SETTINGS;            // Current settings for this 'sketch'
-var SKETCH_UTIL;         // Util functions pertaining to the canvas or 'sketch'
+
+var SETTINGS;            // Current settings for this sketch
+
+var SKETCH;              // var pertaining to sketch
+var CONTROLS;            // to control sketch parameters
+
 var ALL_PATTERN_SCRIPTS; // All scripts to be loaded
+var LOADED_GENERATORS;   // TODO
 
 /* 
 Registered generators 
@@ -25,12 +37,15 @@ ALL_PATTERN_SCRIPTS = [
 
 // Load all required scripts
 $LAB.setOptions()
+    .script("scripts/controls.js")
     .script("scripts/helper/utils.js").wait(function(){
         UTIL = getUtil(); 
     })
     .script("scripts/helper/settings.js").wait(function(){
-        SETTINGS    = getAppSettings();
-        SKETCH_UTIL = getSketchUtil(SETTINGS);
+        SETTINGS = getAppSettings();
+    })
+    .script("scripts/sketch.js").wait(function(){
+        SKETCH = getSketch(SETTINGS);
     })
     .wait(function(){
         for (var i = ALL_PATTERN_SCRIPTS.length - 1; i >= 0; i--) {
@@ -41,12 +56,9 @@ $LAB.setOptions()
                 SETTINGS.register(generatorFunction);
             });
         }
+    }).wait()
+    .script("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js").wait()
+    .script("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js").wait(function(){
+        APPLICATION.onApplicationInitialized();
     })
-    .wait(function(){
-        $LAB.script("scripts/sketch.js").wait()
-            .script("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js")
-            .script("https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js")
-        }
-    )
 ;
-

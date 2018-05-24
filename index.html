@@ -3,27 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> 
-    html, body {
-      height: 100%;
-    }
-    body {
-      margin: 0;
-
-      display: flex;
-
-      /* This centers our sketch horizontally. */
-      justify-content: center;
-
-      /* This centers our sketch vertically. */
-      align-items: center;
-    }
-  </style>
+    <title>Math-Art</title>
   </head>
   <body>
+    <div id="sketch-board"></div>
+    <div id="control-panel"></div>
   </body>
 
+  <style> 
+    #sketch-board {
+      height: 100%;
+      width: 60%;
+      overflow-x: scroll;
+      float: left;
+    }
+    #control-panel {
+      border-radius: 10px;
+      height: 100%;
+      width: 400px;
+      float: left;
+    }
+  </style>
   <script src="http://cdn.rawgit.com/getify/LABjs/master/LAB.js"></script>
-  <script src="scripts/main.js"></script>
-
+  <script src="scripts/main.js" defer></script>
 </html>
