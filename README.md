@@ -1,5 +1,5 @@
 # Math is Beautiful
-:sparkles: Generate beautiful designs, inspired by recursion, powered by [p5.js](https://p5js.org/)
+:sparkles: Collection of interesting geometries, inspired by nature, powered by math and [p5.js](https://p5js.org/)
 
 ### Usage
 Interactive `index.html`

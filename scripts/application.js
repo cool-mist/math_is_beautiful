@@ -1,11 +1,13 @@
 function Application() {
+
+    this._logger      = new Logger("Application");
+    this._logger.time("Init");
+
     this._canvas      = null;
-    this._parent      = "sketch-board",
     this._settings    = new Settings();
     this._patternType = new PatternType(this);
     this._util        = new Util(this._settings);
 
-    this._generatorPath        = "scripts/generators/";
     this._generatorDefinitions = [];
     this._loadedDefinitions    = [];
 
@@ -21,23 +23,25 @@ Application.prototype.init = function(){
     for (var i = generatorDefinitions.length - 1; i >= 0; i--) {
         let generator     = generatorDefinitions[i];
         let generatorUrl  = generatorDefinitions[i].url;      
-        UTIL.loadScript("scripts/generators/" + generatorUrl, function(file){
-            application.__register(generator)
+        UTIL.loadScript(application._generatorPath + generatorUrl, function(file){
+            application.register(generator)
         });
     }
 }
 
-Application.prototype.register = function(generator){
+Application.prototype._parent         = "sketch-board";
+Application.prototype._generatorPath  = "scripts/generators/";
+
+Application.prototype.queueGenerator = function(generator){
     this._generatorDefinitions.push(generator);
 }
 
-
-Application.prototype.__register = function(generator){
+Application.prototype.register = function(generator){
     let func = eval(generator.function);
     this._loadedDefinitions.push(func);
     if(this._loadedDefinitions.length === 1){ // Eager initialization
-        this.onInitializationComplete();
-        console.log("Application initialized with default generator " + func);
+        this.onPartialInitializationComplete();
+        this._logger.info("Initialized with default generator " + func.name);
     }
 }
 
@@ -59,7 +63,7 @@ Application.prototype.setupOnce = function() {
 
 Application.prototype.draw        = function() {};
 Application.prototype.keyPressed  = function(callback){};
-Application.prototype.onInitializationComplete = function(){
+Application.prototype.onPartialInitializationComplete = function(){
 
     this._currentGenerator = 0;
 
@@ -117,6 +121,7 @@ Application.prototype.onInitializationComplete = function(){
             return;
         }
     };
+    this._logger.info("Ready with at least 1 generator in " + this._logger.timeEnd("Init") + "ms");
 };
 
 Application.prototype.redraw = function(){

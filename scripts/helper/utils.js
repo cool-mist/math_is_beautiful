@@ -1,5 +1,6 @@
 /*General purpose util methods*/
 function Util(settings){
+    this._logger   = new Logger("Utils");
     this._settings = settings;    
 }
 
@@ -22,9 +23,10 @@ Util.prototype.boundedIncrement = function (val, increment, min, max){
 };
 
 Util.prototype.loadScript = function (url, callback){
-    var script = document.createElement('script');
+    let script = document.createElement('script');
+    let logger = this._logger;
     script.onload = function(){
-        console.log("Loaded " + url);
+        logger.debug("Loaded " + url);
         callback(url);
     };
     script.src = url;
