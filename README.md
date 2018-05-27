@@ -1,4 +1,6 @@
-# Math is Beautiful
+<p style="text-align:center;"><img src="https://i.imgur.com/hGq3x7w.png" height = "300px" width = "300px" /></p>
+
+# Math is Beautiful 
 :sparkles: Collection of interesting geometries, inspired by nature, powered by math and [p5.js](https://p5js.org/)
 
 ### Usage
