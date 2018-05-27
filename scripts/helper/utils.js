@@ -1,8 +1,13 @@
 /*General purpose util methods*/
-function Util(settings){
-    this._logger   = new Logger("Utils");
-    this._settings = settings;    
-}
+function Util(application){
+    this._application = application;
+    this._logger      = new Logger("Utils");
+    this._settings    = application._settings;    
+};
+
+Util.prototype.getCurrentApplicationContext = function(){
+    return this._application;
+};
 
 Util.prototype.mid = function(x1, x2){
     return (x1 + x2)/2;

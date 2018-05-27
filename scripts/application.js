@@ -3,17 +3,17 @@ function Application() {
     this._logger      = new Logger("Application");
     this._logger.time("Init");
 
-    this._canvas      = null;
-    this._settings    = new Settings();
-    this._patternType = new PatternType(this);
-    this._util        = new Util(this._settings);
-
     this._generatorDefinitions = [];
     this._loadedDefinitions    = [];
 
     this._currentGenerator     = -1;
 
     this._p5RaceVictory = false;
+    this._canvas      = null;
+    this._settings    = new Settings();
+    this._util        = new Util(this);
+    this._patternType = new PatternType(this);
+    this._controls    = new Controls(this);
 }
 
 Application.prototype.init = function(){
@@ -49,8 +49,17 @@ Application.prototype.generate = function(){
     return this._loadedDefinitions[this._currentGenerator];
 }
 
+Application.prototype.selectGeneratorByName = function(funcName){
+    for (var i = this._loadedDefinitions.length - 1; i >= 0; i--) {
+        if(this._loadedDefinitions[i].name == funcName){
+            this._currentGenerator = i;
+            break;
+        }
+    }
+}
+
 Application.prototype.selectNextGenerator = function(){
-    this._currentGenerator = (this._currentGenerator + 1) % this._generatorDefinitions.length;
+    this._currentGenerator = (this._currentGenerator + 1) % this._loadedDefinitions.length;
 }
 
 Application.prototype.setup = function() {
@@ -59,6 +68,7 @@ Application.prototype.setup = function() {
 
 Application.prototype.setupOnce = function() {
     this.redraw();
+    this._controls.reset();
 };
 
 Application.prototype.draw        = function() {};
@@ -79,48 +89,7 @@ Application.prototype.onPartialInitializationComplete = function(){
         this._patternType.drawTiled();
     };
  
-    this.keyPressed = function(keyCode){
-        if(keyCode === this._settings.saveImage){
-            this.exportPNG();
-            return;
-        }
-
-        if(keyCode === this._settings.newImage){
-            this.redraw();
-            return;
-        }
-
-        if(keyCode === this._settings.nextGenerator){
-            this.selectNextGenerator();
-            this._settings.reset();
-            this.redraw();
-            return;
-        }
-
-        if(keyCode === this._settings.incrementComplexity){
-            this._settings.modifyComplexity(1);
-            this.redraw();
-            return;
-        }
-
-        if(keyCode === this._settings.decrementComplexity){
-            this._settings.modifyComplexity(-1);
-            this.redraw();
-            return;
-        }
-
-        if(keyCode === this._settings.incrementPatternCount){
-            this._settings.modifyPatternCount(1);
-            this.redraw();
-            return;
-        }
-
-        if(keyCode === this._settings.decrementPatternCount){
-            this._settings.modifyPatternCount(-1);
-            this.redraw();
-            return;
-        }
-    };
+    this.keyPressed = this._controls.keyPressed.bind(this._controls); // Is this even OOP ?
     this._logger.info("Ready with at least 1 generator in " + this._logger.timeEnd("Init") + "ms");
 };
 

@@ -17,11 +17,10 @@ h : height of draw area
 complexity : complexity of the pattern
 
 */
-var APPLICATION = new Application();
+let APPLICATION = new Application();
 
-var UTIL      = APPLICATION._util;
-var SETTINGS  = APPLICATION._settings; //Current settings
-var CONTROLS;                          // to control sketch parameters @controls.js :TODO
+let UTIL      = APPLICATION._util;
+let SETTINGS  = APPLICATION._settings; //Current settings
 
 APPLICATION.queueGenerator(new GeneratorDefinition("sierpinskiTriangle.js", "sierpinskiTriangleGenerator")); // https://en.wikipedia.org/wiki/Sierpinski_triangle
 APPLICATION.queueGenerator(new GeneratorDefinition("sierpinskiCarpet.js"  , "sierpinskiCarpetGenerator"))  ; // https://en.wikipedia.org/wiki/Sierpinski_carpet

@@ -6,11 +6,16 @@
     <title>Math-Art</title>
   </head>
   <body>
-    <div id="sketch-board"></div>
-    <div id="control-panel"></div>
+    <div id="container">
+      <div id="sketch-board"></div>
+      <div id="control-panel"></div>  
+    </div>
   </body>
 
   <style> 
+    #container{
+      display: flex;
+    }
     #sketch-board {
       height: 100%;
       width: 60%;
@@ -21,8 +26,11 @@
       border-radius: 10px;
       height: 100%;
       width: 400px;
-      float: left;
     }
+    .widget {
+      /* TODO: Show css skillz*/
+    }
+
   </style>
 
   <script src = "scripts/helper/logger.js"></script>
@@ -30,6 +38,7 @@
   <script src = "scripts/helper/patternType.js"></script>
   <script src = "scripts/helper/generatorDefinition.js"></script>
   <script src = "scripts/settings.js"></script>
+  <script src = "scripts/controls.js"></script>
   <script src = "scripts/application.js"></script>
   <script defer src = "scripts/main.js"></script>
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>

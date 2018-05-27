@@ -28,12 +28,20 @@ function Settings(){
 Settings.prototype.reset = function(){
     this.patternCount = 1;
     this.complexity   = 1;
-},
+}
 
 Settings.prototype.modifyComplexity = function(count){
     this.complexity = UTIL.boundedIncrement(this.complexity, count, this.minComplexity, this.maxComplexity);
-},
+}
+
+Settings.prototype.setComplexity = function(newValue){
+    this.complexity = newValue;
+}
 
 Settings.prototype.modifyPatternCount = function(count){
     this.patternCount = UTIL.boundedIncrement(this.patternCount, count, this.minPatternCount, this.maxPatternCount);
+}
+
+Settings.prototype.setPatternCount = function(newValue){
+    this.patternCount = newValue;
 }
