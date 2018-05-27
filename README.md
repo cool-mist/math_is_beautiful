@@ -6,7 +6,7 @@ Interactive `index.html`
 
 ### Controls :video_game:
 
-*Alternate controls apart from the UI*/
+*Alternate controls apart from the UI*
 
 | Key | Purpose|
 |-----|--------|
