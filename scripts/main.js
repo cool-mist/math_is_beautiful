@@ -22,8 +22,13 @@ let APPLICATION = new Application();
 let UTIL      = APPLICATION._util;
 let SETTINGS  = APPLICATION._settings; //Current settings
 
+
+// APPLICATION.queueGenerator(new GeneratorDefinition("example.js" , "exampleGenerator"))    ; // Example generator
+
 APPLICATION.queueGenerator(new GeneratorDefinition("sierpinskiTriangle.js", "sierpinskiTriangleGenerator")); // https://en.wikipedia.org/wiki/Sierpinski_triangle
 APPLICATION.queueGenerator(new GeneratorDefinition("sierpinskiCarpet.js"  , "sierpinskiCarpetGenerator"))  ; // https://en.wikipedia.org/wiki/Sierpinski_carpet
+APPLICATION.queueGenerator(new GeneratorDefinition("heighwayDragon.js"    , "heighwayDragonGenerator"))    ; //http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm
+
 
 APPLICATION.init();
 

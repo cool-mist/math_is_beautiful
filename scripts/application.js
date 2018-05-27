@@ -51,15 +51,30 @@ Application.prototype.generate = function(){
 
 Application.prototype.selectGeneratorByName = function(funcName){
     for (var i = this._loadedDefinitions.length - 1; i >= 0; i--) {
-        if(this._loadedDefinitions[i].name == funcName){
+        if(this._loadedDefinitions[i].name === funcName){
             this._currentGenerator = i;
             break;
         }
     }
+    this.loadSettingsForCurrentGenerator();
 }
 
 Application.prototype.selectNextGenerator = function(){
     this._currentGenerator = (this._currentGenerator + 1) % this._loadedDefinitions.length;
+    this.loadSettingsForCurrentGenerator();
+}
+
+Application.prototype.loadSettingsForCurrentGenerator = function(){
+    try{
+        let func = eval(this._loadedDefinitions[this._currentGenerator].name + "Settings");
+        let settings = func();
+        this._settings.maxPatternCount = settings.maxSize;    
+    }catch(err){
+        this._logger.error(err);
+        this._settings.maxPatternCount = 15;
+    }
+    this._controls.reset();
+    
 }
 
 Application.prototype.setup = function() {
@@ -68,13 +83,13 @@ Application.prototype.setup = function() {
 
 Application.prototype.setupOnce = function() {
     this.redraw();
+    this.loadSettingsForCurrentGenerator();
     this._controls.reset();
 };
 
 Application.prototype.draw        = function() {};
 Application.prototype.keyPressed  = function(callback){};
 Application.prototype.onPartialInitializationComplete = function(){
-
     this._currentGenerator = 0;
 
     if(this._p5RaceVictory === true){
@@ -86,7 +101,17 @@ Application.prototype.onPartialInitializationComplete = function(){
     };
 
     this.draw = function(){
+        this._logger.info("Drawing started ..")
+        this._logger.time("redraw");
+        push();
+
         this._patternType.drawTiled();
+
+        pop();
+        let timeTaken = this._logger.timeEnd("redraw");
+        this._logger.info("Drawing completed in " + timeTaken+ " ms");
+        select("#time").html((timeTaken / 1000).toFixed(5) + " sec");
+
     };
  
     this.keyPressed = this._controls.keyPressed.bind(this._controls); // Is this even OOP ?

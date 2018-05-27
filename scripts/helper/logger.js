@@ -12,8 +12,8 @@ Logger.prototype.debug = function(msg) {
 	console.debug("[DEBUG] ["  + this.name + "]" + msg);
 };
 Logger.prototype.time = function(name){
-	if(this.timers.name !== undefined){
-		this.error("Timer already defined");
+	if(this.timers.name !== undefined && this.timers.name[0] !== "end"){
+		this.error("Timer already defined and running");
 		return;
 	}
 	this.timers.name = ["start", performance.now()];
