@@ -1,7 +1,11 @@
-<p style="text-align:center;"><img src="https://i.imgur.com/hGq3x7w.png" height = "300px" width = "300px" /></p>
-
 # Math is Beautiful 
 :sparkles: Collection of interesting geometries, inspired by nature, powered by math and [p5.js](https://p5js.org/)
+
+<p style="text-align:center;">
+  <img src="https://i.imgur.com/hGq3x7w.png" height = "200px" width = "200px" />
+  <img src="https://i.imgur.com/kZkuvzM.png" height = "300px" width = "300px" />
+  <img src="https://i.imgur.com/AlaAYMz.png" height = "300px" width = "300px" />
+</p>
 
 ### Usage
 Interactive `index.html`
