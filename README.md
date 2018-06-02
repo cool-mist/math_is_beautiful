@@ -7,6 +7,10 @@
   <img src="https://i.imgur.com/AlaAYMz.png" height = "300px" width = "300px" />
 </p>
 
+### Why :flushed:
+* Wallpaper ideas
+* Explore generative systems
+
 ### Usage
 Interactive `index.html`
 
